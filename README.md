@@ -1,4 +1,4 @@
-# CS2H
+# HPCS2
 
 - The purpose of this project is only to learn cheating and anti-cheating. How you use this project has nothing to do with the author.
 
