@@ -1,0 +1,41 @@
+﻿  Source.cpp
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\memory.hpp(97,1): warning C4267: '引數': 將 'size_t' 轉換為 'ULONG'，資料可能遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(465,84): warning C4312: 'reinterpret_cast': 將 'LONG' 轉換為較大的 'HINSTANCE'
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(571,17): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(570,17): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(569,31): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(568,31): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(578,28): warning C4244: '引數': 將 'const float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(577,31): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(638,120): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(638,94): warning C4244: '引數': 將 'LONG' 轉換為 'float'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(645,33): warning C4244: '正在初始化': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(652,17): warning C4244: '引數': 將 'const float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(651,17): warning C4244: '引數': 將 'const float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(650,27): warning C4244: '引數': 將 'const float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(649,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(661,24): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(659,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(658,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(670,24): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(668,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(667,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(681,27): warning C4244: '引數': 將 'const float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(680,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(696,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(695,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(709,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(708,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(722,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(721,30): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(762,34): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(761,34): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(771,34): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(770,34): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(780,34): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(779,34): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(791,38): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(790,38): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(804,38): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+G:\HalfPeopleStudioC++ Porject\HPCS2\HPCS2\Source.cpp(803,38): warning C4244: '引數': 將 'float' 轉換為 'int'，由於類型不同，可能導致資料遺失
+LINK : fatal error LNK1104: 無法開啟檔案 'G:\HalfPeopleStudioC++ Porject\HPCS2\x64\Release\HPCS2.exe'
