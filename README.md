@@ -1,4 +1,4 @@
-# HPCS2
+# HPCS2 - (HalfPeople CSGO 2 Hack Test)
 
 - The purpose of this project is only to learn cheating and anti-cheating. How you use this project has nothing to do with the author.
 - 100% not VAC (this hack only read)
