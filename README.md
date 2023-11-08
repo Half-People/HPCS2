@@ -1,5 +1,7 @@
 # HPCS2 - (HalfPeople CSGO 2 Hack Test)
 
+Download : [Releases](https://github.com/Half-People/HPCS2/releases)
+
 - The purpose of this project is only to learn cheating and anti-cheating. How you use this project has nothing to do with the author.
 - 100% not VAC (this hack only read)
 - maby you like this video you can give me like or add my dc : )
