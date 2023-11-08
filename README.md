@@ -1,6 +1,10 @@
 # HPCS2
 
 - The purpose of this project is only to learn cheating and anti-cheating. How you use this project has nothing to do with the author.
+- 100% not VAC (this hack only read)
+- maby you like this video you can give me like or add my dc : )
+- The purpose of this project is only to learn cheating and anti-cheating. 
+- How you use this project has nothing to do with the author.
 
 video : 
 [YouTube](https://www.youtube.com/watch?v=pVb7yktltYQ&t=106s)
