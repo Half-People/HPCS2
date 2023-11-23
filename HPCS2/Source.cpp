@@ -1,4 +1,4 @@
-#include "offset/offsets.hpp"
+//#include "offset/offsets.hpp"
 #include "offset/client.dll.hpp"
 #include <comdef.h>
 #include <Windows.h>
@@ -12,6 +12,9 @@
 #include <map>
 #include "memory.hpp"
 #include "api/ini.h"
+#include <fstream>
+#include <nlohmann/json.hpp>
+using namespace nlohmann;
 int render_distance = -1;
 bool show_extra = true;
 bool ShowViewAngle = false;
@@ -443,16 +446,17 @@ uintptr_t TraceAddress(uintptr_t BaseAddress, std::vector<unsigned long> Offsets
 }
 
 int localTeam;
+json Offset;
 
 void Triggerbot()
 {
-	uintptr_t  player = process->read<uintptr_t>(cs2_module_client.base + client_dll::dwLocalPlayerPawn);
+	uintptr_t  player = process->read<uintptr_t>(cs2_module_client.base + Offset["client_dll"]["data"]["dwLocalPlayerPawn"]["value"]);//client_dll::dwLocalPlayerPawn);
 	unsigned long   iIDEntIndex = process->read<unsigned long >(player + C_CSPlayerPawnBase::m_iIDEntIndex);
 	//std::cout << "\n " << iIDEntIndex;
 	if (iIDEntIndex == -1)
 		return;
 
-	const uintptr_t ListEntry = TraceAddress(cs2_module_client.base + client_dll::dwEntityList, { 0x8 * (iIDEntIndex >> 9) + 0x10,0x0 });
+	const uintptr_t ListEntry = TraceAddress(cs2_module_client.base +/*client_dll::dwEntityList*/ Offset["client_dll"]["data"]["dwEntityList"]["value"], { 0x8 * (iIDEntIndex >> 9) + 0x10,0x0 });
 	if (ListEntry == 0)
 		return;
 
@@ -496,17 +500,17 @@ void Bunnyhop(uintptr_t player)
 	const bool hasFlagInAir = process->read<int>(player + C_BaseEntity::m_fFlags) & (1 << 0);
 	if (GetAsyncKeyState(VK_SPACE) && hasFlagInAir)
 	{
-		process->write(cs2_module_client.base + client_dll::dwForceJump, 65537);
+		process->write(cs2_module_client.base + Offset["client_dll"]["data"]["dwForceJump"]["value"] /*client_dll::dwForceJump*/, 65537);
 	}
 	else if (GetAsyncKeyState(VK_SPACE) && !hasFlagInAir)
 	{
-		process->write(cs2_module_client.base + client_dll::dwForceJump, 256);
-		process->write(cs2_module_client.base + client_dll::dwForceJump, 65537);
-		process->write(cs2_module_client.base + client_dll::dwForceJump, 256);
+		process->write(cs2_module_client.base + Offset["client_dll"]["data"]["dwForceJump"]["value"], 256);
+		process->write(cs2_module_client.base + Offset["client_dll"]["data"]["dwForceJump"]["value"], 65537);
+		process->write(cs2_module_client.base + Offset["client_dll"]["data"]["dwForceJump"]["value"], 256);
 	}
 	else
 	{
-		process->write(cs2_module_client.base + client_dll::dwForceJump, 256);
+		process->write(cs2_module_client.base + Offset["client_dll"]["data"]["dwForceJump"]["value"], 256);
 	}
 }
 
@@ -602,7 +606,21 @@ int main(int argc, char* argv[])
 		}
 	} while (cs2_module_client.base == 0 || base_engine.base == 0);
 
-	const uintptr_t buildNumber = process->read<uintptr_t>(base_engine.base + engine2_dll::dwBuildNumber);
+	system("call cs2-dumper.exe -b .json --output offsets -o -v");
+
+	std::ifstream rfileOffset;
+	rfileOffset.open("offsets\\offsets.json");
+	if (rfileOffset.good())
+	{
+		std::cout << "\n Read Offsets.json";
+		rfileOffset >> Offset;
+	}
+	else
+		std::cout << "\n Read Offsets.json Error";
+
+	rfileOffset.close();
+
+	const uintptr_t buildNumber = process->read<uintptr_t>(base_engine.base + Offset["engine2_dll"]["data"]["dwBuildNumber"]["value"] /*engine2_dll::dwBuildNumber*/);
 	std::cout << "\n build number : " << buildNumber;
 
 	std::cout << " Make sure your game is in \"Full Screen Windowed\"" << std::endl;
@@ -875,7 +893,7 @@ void DrawMenu()
 			AimSmoothing += 0.5;
 		}
 		else
-			if (AimSmoothing - 0.5 > 1)
+			if (AimSmoothing - 0.5 > 0.5)
 				AimSmoothing -= 0.5;
 	}
 
@@ -1039,7 +1057,7 @@ void DrawAimBotFOV(float Fov)
 void loop()
 {
 	static int indirectUpdate = 0;
-	uintptr_t localPlayer;
+	static uintptr_t localPlayer;
 	if (GetKeyState(VK_F1) & 0x8000)
 	{
 		Sleep(100);
@@ -1059,10 +1077,10 @@ void loop()
 	if (indirectUpdate == 0)
 	{
 		indirectUpdate++;
-		entity_list = process->read<uintptr_t>(cs2_module_client.base + client_dll::dwEntityList);
+		entity_list = process->read<uintptr_t>(cs2_module_client.base + Offset["client_dll"]["data"]["dwEntityList"]["value"] /*client_dll::dwEntityList*/);
 
 		//localPlayer = process->read<uintptr_t>(localPlayerController + CCSPlayerController::m_hPlayerPawn);
-		localPlayer = process->read<uintptr_t>(cs2_module_client.base + client_dll::dwLocalPlayerPawn);
+		localPlayer = process->read<uintptr_t>(cs2_module_client.base + Offset["client_dll"]["data"]["dwLocalPlayerPawn"]["value"] /*client_dll::dwLocalPlayerPawn*/);
 		if (!localPlayer)
 			return;
 
@@ -1089,7 +1107,7 @@ void loop()
 
 	if (!DrawESP)
 		return;
-	const view_matrix_t view_matrix = process->read<view_matrix_t>(cs2_module_client.base + client_dll::dwViewMatrix);
+	const view_matrix_t view_matrix = process->read<view_matrix_t>(cs2_module_client.base + Offset["client_dll"]["data"]["dwViewMatrix"]["value"] /*client_dll::dwViewMatrix*/);
 
 	int playerIndex = 0;
 	uintptr_t list_entry;
@@ -1099,7 +1117,7 @@ void loop()
 	if (indirectUpdate == 0)
 	{
 		localCGameSceneNode = process->read<uintptr_t>(localPlayer + C_BaseEntity::m_pGameSceneNode);
-		c4IsPlanted = process->read<bool>(cs2_module_client.base + client_dll::dwPlantedC4 - 0x8);
+		c4IsPlanted = process->read<bool>(cs2_module_client.base + Offset["client_dll"]["data"]["dwPlantedC4"]["value"] /*client_dll::dwPlantedC4*/ - 0x8);
 	}
 
 	const Vector3 localOrigin = process->read<Vector3>(localCGameSceneNode + CGameSceneNode::m_vecOrigin);
@@ -1107,7 +1125,7 @@ void loop()
 	render::RenderText(g::hdcBuffer, 50, 50, "HalfPeople CSGO 2 GameHack Test", RGB(200, 200, 200), 30);
 	if (c4IsPlanted)
 	{
-		const uintptr_t planted_c4 = process->read<uintptr_t>(process->read<uintptr_t>(cs2_module_client.base + client_dll::dwPlantedC4));
+		const uintptr_t planted_c4 = process->read<uintptr_t>(process->read<uintptr_t>(cs2_module_client.base + Offset["client_dll"]["data"]["dwPlantedC4"]["value"] /*client_dll::dwPlantedC4*/));
 
 		const uintptr_t c4Node = process->read<uintptr_t>(planted_c4 + C_BaseEntity::m_pGameSceneNode);
 
@@ -1512,8 +1530,14 @@ void FunctionT()
 
 	static int indirectUpdate = 0;
 	static uintptr_t localPlayer;
-	if (!(brecoilControl || AimBot || entity_list || localPlayer))
-		return;
+	//if (!(brecoilControl || AimBot || entity_list || localPlayer))
+	//{
+	//	std::cout << "\n brecoilControl : " << brecoilControl;
+	//	std::cout << "\n AimBot : " << AimBot;
+	//	std::cout << "\n entity_list : " << entity_list;
+	//	std::cout << "\n localPlayer : " << localPlayer;
+	//	return;
+	//}
 
 	int playerIndex = -1;
 	uintptr_t list_entry;
@@ -1521,8 +1545,10 @@ void FunctionT()
 	if (indirectUpdate == 0)
 	{
 		indirectUpdate++;
-		localPlayer = process->read<uintptr_t>(cs2_module_client.base + client_dll::dwLocalPlayerPawn);
-		baseViewAnglesAddy = cs2_module_client.base + client_dll::dwViewAngles;
+		localPlayer = process->read<uintptr_t>(cs2_module_client.base + Offset["client_dll"]["data"]["dwLocalPlayerPawn"]["value"] /*client_dll::dwLocalPlayerPawn*/);
+		//std::cout << "\n " << process->read<int>(localPlayer + C_BaseEntity::m_iHealth);
+
+		baseViewAnglesAddy = cs2_module_client.base + Offset["client_dll"]["data"]["dwViewAngles"]["value"] /*client_dll::dwViewAngles*/;
 	}
 	else if (indirectUpdate > 20)
 		indirectUpdate = 0;
@@ -1534,7 +1560,7 @@ void FunctionT()
 
 	Vector3 cameraPos = process->read<Vector3>(localPlayer + C_CSPlayerPawnBase::m_vecLastClipCameraPos);
 
-	Vector3 baseViewAngles = process->read<Vector3>(cs2_module_client.base + client_dll::dwViewAngles);
+	Vector3 baseViewAngles = process->read<Vector3>(cs2_module_client.base + Offset["client_dll"]["data"]["dwViewAngles"]["value"] /*client_dll::dwViewAngles*/);
 
 	C_UTL_VECTOR aimPunchCache = process->read<C_UTL_VECTOR>(localPlayer + C_CSPlayerPawn::m_aimPunchCache);
 

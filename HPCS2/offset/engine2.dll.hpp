@@ -1,6 +1,6 @@
 /*
  * Created using https://github.com/a2x/cs2-dumper
- * Sat, 4 Nov 2023 21:18:20 +0000
+ * Wed, 22 Nov 2023 19:35:50 +0000
  */
 
 #pragma once
@@ -175,6 +175,11 @@ namespace EventClientSimulate_t { // EventSimulate_t
 
 namespace EventFrameBoundary_t {
     constexpr std::ptrdiff_t m_flFrameTime = 0x0; // float
+}
+
+namespace EventHostTimescaleChanged_t {
+    constexpr std::ptrdiff_t m_flOldValue = 0x0; // float
+    constexpr std::ptrdiff_t m_flNewValue = 0x4; // float
 }
 
 namespace EventModInitialized_t {

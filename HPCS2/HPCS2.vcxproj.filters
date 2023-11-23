@@ -86,5 +86,18 @@
     <ClInclude Include="api\ini.h">
       <Filter>來源檔案</Filter>
     </ClInclude>
+    <ClInclude Include="resource2.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="HPCS2.rc">
+      <Filter>資源檔</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="hpcs2logo.ico">
+      <Filter>資源檔</Filter>
+    </Image>
   </ItemGroup>
 </Project>
