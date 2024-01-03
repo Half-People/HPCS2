@@ -1,3 +1,6 @@
+## NewUpdata By `banovers`
+[GitHub](https://github.com/banovers/csgo2-cheat)
+
 # HPCS2 - (HalfPeople CSGO 2 Hack Test)
 
 Download : [Releases](https://github.com/Half-People/HPCS2/releases)
